@@ -14,11 +14,6 @@ TBD...
 
 
 ****
-## Exposed web APIs:
-TBD...
-
-
-****
 ## Pending technical/business BLIs:
 0. ~~Design.~~  (Done - Pushed)  
 1. ~~Project skeleton.~~  (Done - Pushed)   
