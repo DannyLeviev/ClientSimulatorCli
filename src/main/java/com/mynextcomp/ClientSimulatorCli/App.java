@@ -2,8 +2,8 @@ package com.mynextcomp.ClientSimulatorCli;
 
 import java.io.IOException;
 
-import com.mynextcomp.ClientSimulatorCli.RunnablesImpl.KeyBoardWatcherRunnable;
-import com.mynextcomp.ClientSimulatorCli.Utils.Utils;
+import com.mynextcomp.ClientSimulatorCli.runnablesImpl.KeyBoardWatcherRunnable;
+import com.mynextcomp.ClientSimulatorCli.utils.Utils;
 
 public class App {
 
@@ -15,6 +15,7 @@ public class App {
 		System.out.println(ASK_2_TYPE_NUM_OF_CLIENTS);
 		// Get from user (and validate) number of Clients:
 		int numOfClients = Utils.getValidNumOfClientsFromUser();
+
 		// Initiate and start keyBoardWatcher thread:
 		Thread keyBoardWatcher = new Thread(new KeyBoardWatcherRunnable(numOfClients));
 		keyBoardWatcher.start();

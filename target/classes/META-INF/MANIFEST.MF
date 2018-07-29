@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Built-By: i052846
-Build-Jdk: 1.8.0_181
+Built-By: danny
+Build-Jdk: 1.8.0_172
 Created-By: Maven Integration for Eclipse
 Main-Class: com.mynextcomp.ClientSimulatorCli.App
 

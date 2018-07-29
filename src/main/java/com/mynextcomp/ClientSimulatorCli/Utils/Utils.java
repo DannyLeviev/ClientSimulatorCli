@@ -1,5 +1,8 @@
-package com.mynextcomp.ClientSimulatorCli.Utils;
+package com.mynextcomp.ClientSimulatorCli.utils;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Scanner;
 
 public class Utils {
@@ -20,4 +23,20 @@ public class Utils {
 		return result;
 	}
 
+	public static int performHttpRequest(String urlStr) {
+		int result = -1;
+		try {
+			URL url = new URL(urlStr);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			result = conn.getResponseCode();
+			conn.disconnect();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+		return result;
+
+	}
 }
