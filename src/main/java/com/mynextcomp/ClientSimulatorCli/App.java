@@ -1,23 +1,31 @@
 package com.mynextcomp.ClientSimulatorCli;
 
-import java.util.Scanner;
+import java.io.IOException;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello user, how many HTTP clients would you like to simulate?");
-        Scanner cmdReader = new Scanner(System.in);
-        String input = cmdReader.nextLine();
-        //TBD - validate the input !!!
-        System.out.println( "Simulation of " + input + " Http Clients has begun, press any key to stop the process !");
-        //TBD - create and run the HTTP Client Runnable Threads - interrupt them on any key press !!!
-        System.out.println(cmdReader.next());
-        cmdReader.close();
-        System.exit(0);
-    }
+import com.mynextcomp.ClientSimulatorCli.RunnablesImpl.KeyBoardWatcherRunnable;
+import com.mynextcomp.ClientSimulatorCli.Utils.Utils;
+
+public class App {
+
+	private static final String SAY_HI = "Hello user.";
+	private static final String ASK_2_TYPE_NUM_OF_CLIENTS = "How many HTTP clients would you like to simulate?";
+
+	public static void main(String[] args) {
+		System.out.println(SAY_HI);
+		System.out.println(ASK_2_TYPE_NUM_OF_CLIENTS);
+		// Get from user (and validate) number of Clients:
+		int numOfClients = Utils.getValidNumOfClientsFromUser();
+		// Initiate and start keyBoardWatcher thread:
+		Thread keyBoardWatcher = new Thread(new KeyBoardWatcherRunnable(numOfClients));
+		keyBoardWatcher.start();
+		// Listen to the keyboard to know when to stop the clients:
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			// No need to handle, has no meaning!
+		}
+		// Signal to the Clients to stop running:
+		// TBD - signal !!!
+		System.exit(0);
+	}
 }
