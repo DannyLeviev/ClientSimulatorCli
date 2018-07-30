@@ -17,5 +17,5 @@ TBD...
 ## Pending technical/business BLIs:
 0. ~~Design.~~  (Done - Pushed)  
 1. ~~Project skeleton.~~  (Done - Pushed)   
-2. Implement the client threads.   (In process)  
-3. Finalize.  (TBD)      
+2. ~~Implement the client threads.~~   (Done - Pushed)  
+3. Test & Finalize.  (In process)      

@@ -7,10 +7,8 @@ import java.util.Scanner;
 
 public class Utils {
 
-	public static int getValidNumOfClientsFromUser() {
+	public static int getValidNumOfClientsFromUser(Scanner cmdReader) {
 		int result = -1;
-		Scanner cmdReader = new Scanner(System.in);
-
 		do {
 			while (!cmdReader.hasNextInt()) {
 				String input = cmdReader.next();
@@ -18,8 +16,6 @@ public class Utils {
 			}
 			result = cmdReader.nextInt();
 		} while (result < 0);
-
-		cmdReader.close();
 		return result;
 	}
 

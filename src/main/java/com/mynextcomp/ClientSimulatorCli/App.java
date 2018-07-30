@@ -1,8 +1,9 @@
 package com.mynextcomp.ClientSimulatorCli;
 
 import java.io.IOException;
+import java.util.Scanner;
 
-import com.mynextcomp.ClientSimulatorCli.runnablesImpl.KeyBoardWatcherRunnable;
+import com.mynextcomp.ClientSimulatorCli.runnablesImpl.ClientRunnable;
 import com.mynextcomp.ClientSimulatorCli.utils.Utils;
 
 public class App {
@@ -13,20 +14,28 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println(SAY_HI);
 		System.out.println(ASK_2_TYPE_NUM_OF_CLIENTS);
+		Scanner cmdReader = new Scanner(System.in);
 		// Get from user (and validate) number of Clients:
-		int numOfClients = Utils.getValidNumOfClientsFromUser();
+		int numOfClients = Utils.getValidNumOfClientsFromUser(cmdReader);
 
-		// Initiate and start keyBoardWatcher thread:
-		Thread keyBoardWatcher = new Thread(new KeyBoardWatcherRunnable(numOfClients));
-		keyBoardWatcher.start();
+		// Initiate and start Client threads:
+		Thread[] clients = new Thread[numOfClients];
+		for (int i = 0; i < numOfClients; i++) {
+			clients[i] = new Thread(new ClientRunnable(), Integer.toString(i));
+		}
+		for(Thread t : clients) {
+			t.start();
+		}
 		// Listen to the keyboard to know when to stop the clients:
 		try {
 			System.in.read();
 		} catch (IOException e) {
-			// No need to handle, has no meaning!
+			// No need to handle, in the scope of this task !
 		}
 		// Signal to the Clients to stop running:
-		// TBD - signal !!!
-		System.exit(0);
+		for(Thread t : clients) {
+			t.interrupt();
+		}
+		cmdReader.close();
 	}
 }
