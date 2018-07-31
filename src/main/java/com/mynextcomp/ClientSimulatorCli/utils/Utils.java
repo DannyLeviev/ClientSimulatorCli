@@ -19,6 +19,7 @@ public class Utils {
 		return result;
 	}
 
+	
 	public static int performHttpRequest(String urlStr) {
 		int result = -1;
 		try {
@@ -33,6 +34,5 @@ public class Utils {
 
 		}
 		return result;
-
 	}
 }
