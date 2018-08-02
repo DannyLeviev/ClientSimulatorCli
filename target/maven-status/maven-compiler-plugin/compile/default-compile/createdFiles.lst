@@ -1,1 +1,3 @@
-com\mynextcomp\ClientSimulatorCli\App.class
+com\mynextcomp\ClientSimulatorCli\runnablesImpl\ClientRunnable.class
+com\mynextcomp\ClientSimulatorCli\CLIRunner.class
+com\mynextcomp\ClientSimulatorCli\utils\Utils.class
