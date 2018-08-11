@@ -1,0 +1,47 @@
+[33mcommit 59abb947e7d89ece3bd92811d531336eaa40f80e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Danny Leviev <danny.leviev@gmail.com>
+Date:   Thu Aug 2 03:46:00 2018 +0300
+
+    Finalize.
+
+[33mcommit be0ff95cc7df4448d2575ddb09cde503757a385d[m
+Author: Leviev <danny.leviev@sap.com>
+Date:   Tue Jul 31 15:33:31 2018 +0300
+
+    Minor corrections followed manual tests.
+
+[33mcommit 6a16f28a1fd6bdd8879b7922b2e62022f503fc3f[m
+Author: Danny Leviev <danny.leviev@gmail.com>
+Date:   Tue Jul 31 02:29:46 2018 +0300
+
+    Implement the Client threads.
+
+[33mcommit 9f3822a09be802d658f701467974977c3f2c4728[m
+Author: Danny Leviev <danny.leviev@gmail.com>
+Date:   Mon Jul 30 00:24:44 2018 +0300
+
+    Adding HttpURLConnection plass etc.
+
+[33mcommit 5ef7350047fa6c4c20758085541e789119de9ab4[m
+Author: Leviev <danny.leviev@sap.com>
+Date:   Sun Jul 29 20:46:00 2018 +0300
+
+    Implement the KeyBoardWatcher thread.
+
+[33mcommit aa27d9b849d7dc5aeb84a02843702aff284663c8[m
+Author: Danny Leviev <danny.leviev@gmail.com>
+Date:   Sun Jul 29 00:51:37 2018 +0300
+
+    Update README.md
+
+[33mcommit 4008ec1fcdd4ba9aa97c4bc273a03ecd218bf9fc[m
+Author: Danny Leviev <danny.leviev@gmail.com>
+Date:   Sun Jul 29 00:50:32 2018 +0300
+
+    Create README.md
+
+[33mcommit 32e0ba9847e9e6b276e42ddae38dcec4b3247b72[m
+Author: Danny Leviev <danny.leviev@gmail.com>
+Date:   Sun Jul 29 00:45:07 2018 +0300
+
+    Project skeleton.

@@ -2,38 +2,37 @@ package com.mynextcomp.ClientSimulatorCli.runnablesImpl;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.mynextcomp.ClientSimulatorCli.utils.Utils;
 
 public class ClientRunnable implements Runnable {
 
-	private static volatile boolean shouldContinueRunning = true;
-	//private final static Logger LOGGER = LoggerFactory.getLogger(ClientRunnable.class);
+	private static final AtomicBoolean stopRunning = new AtomicBoolean(true);
 
 	private final String URL_STR = "http://localhost:8080/?clientID=";
 	private static final Random rand = ThreadLocalRandom.current();
-	private final int MAX_DELAY_4_RAND = 1000; // Max delay between (each) client calls to the DdosProtector service.
+	private final int MAX_DELAY_4_RAND = 1000;
+	private String threadName;
+
+	public static void stopCliens() {
+		stopRunning.set(true);
+	}
 
 	public void run() {
-		System.out.println("Client_" + Thread.currentThread().getName() + " is alive !");
-		//LOGGER.info("Client_{} is alive !", Thread.currentThread().getName());
-		while (shouldContinueRunning && !Thread.currentThread().isInterrupted()) {
-			int responseCode = Utils.performHttpRequest(URL_STR + Thread.currentThread().getName());
-			System.out.println("Client_" + Thread.currentThread().getName() + " received status code : " + responseCode);
-			//LOGGER.info("Client_{} received status code : ", Thread.currentThread().getName(), responseCode);
+		threadName = Thread.currentThread().getName();
+		System.out.println("Client_" + threadName + " is alive !");
+		stopRunning.set(false);
+		while (!stopRunning.get()) {
+			int responseCode = Utils.sendRequest(URL_STR + threadName);
+			System.out.println("Client_" + threadName + " received status code : " + responseCode);
 			try {
 				Thread.sleep(rand.nextInt(MAX_DELAY_4_RAND));
 			} catch (InterruptedException e) {
-				// Do nothing, to enable "gracefully drain all the requests" !
-				//LOGGER.warn("Client_{} was interrupted !", Thread.currentThread().getName());
+				Thread.currentThread().interrupt();
 			}
 		}
-		System.out.println("Client_" + Thread.currentThread().getName() + " was gracefully stopped !");
-		//LOGGER.warn("Client_{} was gracefully stopped !", Thread.currentThread().getName());
-	}
-
-	public static void setShouldContinueRunning(boolean isOn) {
-		shouldContinueRunning = isOn;
+		System.out.println("Client_" + threadName + " was stopped !");
 	}
 
 }

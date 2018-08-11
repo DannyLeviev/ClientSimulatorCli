@@ -20,7 +20,7 @@ public class Utils {
 	}
 
 	
-	public static int performHttpRequest(String urlStr) {
+	public static int sendRequest(String urlStr) {
 		int result = -1;
 		try {
 			URL url = new URL(urlStr);
