@@ -29,9 +29,7 @@ public class Utils {
 			result = conn.getResponseCode();
 			conn.disconnect();
 		} catch (IOException e) {
-
 			e.printStackTrace();
-
 		}
 		return result;
 	}
